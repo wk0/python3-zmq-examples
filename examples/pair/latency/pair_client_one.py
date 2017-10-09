@@ -2,7 +2,13 @@ import zmq
 import random
 import sys
 import time
-import datetime
+from datetime import datetime
+
+"""
+Based on pair/simple within this project
+* Sending datetime
+* Measuring latency
+"""
 
 """
 Based on:
@@ -23,21 +29,16 @@ socket.bind("tcp://*:%s" % port)
 
 print("I am client one!")
 
-"""
-Explicit encoding/decoding of unicode strings here,
-can also do recv_string, send_string
-"""
-message_count = 0
-while True:
+for i in range(10):
     # Preparing Message
-    message_unicode = "Message #{} from client one.".format(message_count)
-    message_utf8 = message_unicode.encode('utf-8')
-    socket.send(message_utf8)
-    message_count += 1
+    message_datetime = str(datetime.now())
+    socket.send_string(message_datetime)
 
     # Recieving Message
-    msg = socket.recv()
-    msg_unicode = msg.decode("utf-8")
-    print(msg_unicode)
+    msg_datetime = socket.recv_string()
+    recieved_datetime = datetime.strptime(msg_datetime, "%Y-%m-%d %H:%M:%S.%f")
+    assert(msg_datetime==str(recieved_datetime))
 
-    time.sleep(1)
+    # Calculate latency
+    latency = datetime.now() - recieved_datetime
+    print(str(latency))
