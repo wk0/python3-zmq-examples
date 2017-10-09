@@ -29,6 +29,15 @@ socket.bind("tcp://*:%s" % port)
 
 print("I am client one!")
 
+"""
+recv_string(), send_string()
+
+These methods simply wrap their bytes counterpart by encoding to/decoding
+from bytes around them, andThese methods simply wrap their bytes counterpart
+by encoding to/decoding from bytes around them, and they all take an encoding
+keyword argument that defaults to utf-8 they all take an encoding keyword
+argument that defaults to utf-8
+"""
 for i in range(10):
     # Preparing Message
     message_datetime = str(datetime.now())

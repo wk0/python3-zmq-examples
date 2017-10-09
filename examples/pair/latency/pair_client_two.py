@@ -20,6 +20,7 @@ Pair:
 * There can only be one connected peer.
 * The server listens on a certain port and a client connects to it.
 """
+
 # Preset port, can use cmd line args
 port = "5556"
 context = zmq.Context()
@@ -28,6 +29,15 @@ socket.connect("tcp://localhost:%s" % port)
 
 print("I am client two!")
 
+"""
+recv_string(), send_string()
+
+These methods simply wrap their bytes counterpart by encoding to/decoding
+from bytes around them, andThese methods simply wrap their bytes counterpart
+by encoding to/decoding from bytes around them, and they all take an encoding
+keyword argument that defaults to utf-8 they all take an encoding keyword
+argument that defaults to utf-8
+"""
 for i in range(10):
     # Recieving Message
     msg_datetime = socket.recv_string()
