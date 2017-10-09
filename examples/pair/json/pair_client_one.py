@@ -6,7 +6,7 @@ import time
 """
 Based on pair/simple within this project
 * Sending json
-* incorporating message loop with a function
+* Exiting on completion
 """
 
 """

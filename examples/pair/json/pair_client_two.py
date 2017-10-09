@@ -6,7 +6,7 @@ import time
 """
 Based on pair/simple within this project
 * Sending json
-* incorporating message loop with a function
+* Exiting on completion
 """
 
 """
@@ -40,7 +40,6 @@ while True:
     if msg == -1:
         sys.exit(0)
     print(msg)
-
 
     # Preparing Message
     message_unicode = "Message #{} from school delivered!".format(message_count)
